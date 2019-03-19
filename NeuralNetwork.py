@@ -14,6 +14,7 @@ class NeuralNetwork():
         self.activationFunction = list()
         self.momentum = list()
         self.learningRate = 0.1
+        self.momentumRate = 0.1
 
         for i in range(1, len(neuronsPerLayer)):
             weights = np.random.normal(0.0, pow(neuronsPerLayer[i - 1], -0.5), (neuronsPerLayer[i], neuronsPerLayer[i - 1]))
@@ -53,6 +54,6 @@ class NeuralNetwork():
             self.bias[i] += gradient * self.learningRate
             deltaWeight = self.learningRate * np.dot(gradient, history[i].T)
             deltaWeight += self.momentum[i]
-            self.momentum[i] = deltaWeight
+            self.momentum[i] = deltaWeight * self.momentumRate
             self.weights[i] += deltaWeight
             error = newError
