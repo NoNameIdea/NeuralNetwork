@@ -16,7 +16,7 @@ class NeuralNetwork():
 
         for i in range(1, len(neuronsPerLayer)):
             weights = np.random.normal(0.0, pow(neuronsPerLayer[i - 1], -0.5), (neuronsPerLayer[i], neuronsPerLayer[i - 1]))
-            bias = np.random.normal(0.0, 0, (neuronsPerLayer[i], 1))
+            bias = np.random.normal(0.0, 0.2, (neuronsPerLayer[i], 1))
             self.bias.append(bias)
             self.activationFunction.append((sigmoid, dsigmoid))
             self.weights.append(weights)
